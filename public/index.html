@@ -93,7 +93,7 @@
             
             var json = {'param1':parm1,'param2':parm2,'param3':parm3,'param4':parm4};
 
-            ajaxPost("http://127.0.0.1:8081/process_post",json);
+            ajaxPost("https://boiling-beach-44340.herokuapp.com/process_post",json);
         }
 
         /**
@@ -113,7 +113,7 @@
                 $('#inpText4').val(data.main.humidity);*/
                 },
                 error: function() {
-                    mensaje('error', 'Error al cargar la información');
+                    alert('Error al cargar la información');
                 }
             });
         }
