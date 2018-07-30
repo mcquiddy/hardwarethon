@@ -1,0 +1,143 @@
+<html>
+    <head>
+        <title>
+            HardwareThon2018
+        </title>
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <br>
+        <div id="divUno" class="well col-md-8 col-md-offset-2"> <!-- Div 1-->
+            <input type="radio" id="radioUno" name="radioB" />
+            <input type="radio" id="radioDos" name="radioB"/>
+            <br>
+            <div id="divDos" class="well form-group"> <!-- Div 2-->
+                <label for="inpText">Input Text</label>
+                <input type="text" id="inpText" class="form-control" />
+                <label for="inpEmail">Input Email</label>
+                <input type="email" id="inpEmail" class="form-control" />
+                <label for="inpTextArea">Text Area</label>
+                <textarea id="inpTextArea" class="form-control" > </textarea>
+            </div> <!-- Fin Div 2-->
+
+            <div id="divTres" class="well form-group"> <!-- Div 3-->
+                <label for="inpText1">Input 1</label>
+                <input type="text" id="inpText1" class="form-control" />
+                <label for="inpText2">Input 2</label>
+                <input type="text" id="inpText2" class="form-control" />
+                <label for="inpText3">Input 3</label>
+                <input type="text" id="inpText3" class="form-control" />
+                <label for="inpText4">Input 4</label>
+                <input type="text" id="inpText4" class="form-control"/>
+                <hr>
+                <button id="btnSubmit" class="btn btn-success" onclick="sendData()">Send</button>
+            </div> <!-- Fin Div 3-->
+        </div> <!-- Fin Div 1-->
+    </body>
+    <script>
+        /**
+        * Action Listeneres
+        */
+        document.getElementById("inpText").addEventListener("change", function(){
+            emptyValidation($(this).val());
+        });
+
+        document.getElementById("inpTextArea").addEventListener("change", function(){
+            emptyValidation($(this).val());
+        });
+
+        document.getElementById("inpEmail").addEventListener("change", function(){
+            isEmail($(this).val());
+        });
+
+        document.getElementById("radioUno").addEventListener("click", function(){            
+            visibleDiv('divDos',$(this).is(':checked'));
+            visibleDiv('divTres',!$(this).is(':checked'));
+        });
+        document.getElementById("radioDos").addEventListener("click", function(){
+            visibleDiv('divTres',$(this).is(':checked'));
+            visibleDiv('divDos',!$(this).is(':checked'));
+        });
+
+        /**
+        * Validation Functions
+        */
+        function emptyValidation(pData){
+            if(pData == ""){
+                alert("Input Vacio")
+            }
+        }
+
+        function isEmail(pEmail) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if(!regex.test(pEmail)){
+                alert("Correo Incorrecto");
+            }
+        }
+
+        function visibleDiv(pId,pVal){
+            if(pVal){
+                document.getElementById(pId).style.visibility = "hidden";
+            }else{
+                document.getElementById(pId).style.visibility = "visible";
+            }
+        }
+
+        function sendData(){
+            var parm1 = $('#inpText1').val();
+            var parm2 = $('#inpText2').val();
+            var parm3 = $('#inpText3').val();
+            var parm4 = $('#inpText4').val();
+            
+            var json = {'param1':parm1,'param2':parm2,'param3':parm3,'param4':parm4};
+
+            ajaxPost("http://127.0.0.1:8081/process_post",json);
+        }
+
+        /**
+         * Ajax Code  
+         **/
+        function ajaxWeather(){
+            $.ajax({
+            type: "GET",
+            url: 'https://fcc-weather-api.glitch.me/api/current?lat=9.937542&lon=-84.061180',
+            contentType: "application/json; charset=utf-8",
+            datatype: "json",
+            success: function(data) {
+                alert("Success")
+                /*$('#inpText1').val('Log: ' + data.coord.lon + '  -  Lat: ' + data.coord.lat );
+                $('#inpText2').val(data.weather[0].description);
+                $('#inpText3').val(data.main.temp);
+                $('#inpText4').val(data.main.humidity);*/
+                },
+                error: function() {
+                    mensaje('error', 'Error al cargar la información');
+                }
+            });
+        }
+
+        function ajaxPost(pUrl,pParam) {
+            var options = { "backdrop": "static", keyboard: true };
+            $.ajax({
+                data: pParam,
+                type: "POST",
+                url: pUrl,
+                success: function(data) {
+                    alert("Success");
+                },
+                error: function() {
+                    mensaje('error', 'Error al cargar la información');
+                }
+            });
+        }
+
+    
+    </script>
+    
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</html>
