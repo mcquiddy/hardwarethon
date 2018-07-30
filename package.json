@@ -1,5 +1,5 @@
 {
-  "name": "public",
+  "name": "paginahwr",
   "version": "1.0.0",
   "description": "Test1",
   "main": "server.js",
@@ -7,6 +7,28 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
-  "license": "ISC"
+  "engines": {
+    "node": "8.11.3"
+  },
+  "author": "mcquiddy",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcquiddy/hardwarethon.git"
+  },
+  "keywords": [
+    "example",
+    "heroku",
+    "hardwarethon",
+    "node",
+    "express"
+  ],
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*"
+  },
+  "bugs": {
+    "url": "https://github.com/mcquiddy/hardwarethon/issues"
+  },
+  "homepage": "https://github.com/mcquiddy/hardwarethon#readme"
 }
