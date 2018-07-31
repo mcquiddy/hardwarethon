@@ -169,7 +169,10 @@
                 type: "POST",
                 url: pUrl,
                 success: function(data) {
-                    alert("Success");
+                    alert("Server Response: \n Input 1: " + data.param1 + 
+                            "\n Input 2: " + data.param2 + 
+                            "\n Input 3: " + data.param3 +
+                            "\n Input 4: " + data.param4);
                 },
                 error: function() {
                     alert('Error al cargar la información');
