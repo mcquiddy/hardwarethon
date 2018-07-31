@@ -190,7 +190,7 @@
                 url: pUrl,
                 datatype: "json",
                 success: function(data) {
-                    alert(data);
+                    data = JSON.parse(data);
                     alert("Server Response: \n Input 1: " + data.param1 + 
                             "\n Input 2: " + data.param2 + 
                             "\n Input 3: " + data.param3 +
