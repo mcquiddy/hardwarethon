@@ -46,6 +46,12 @@
                 <div id="regions_div" style="width: 80%; height: 500px;margin-left: 10%; border-style: solid;
                 border-color: coral;"></div>
         </div>
+        <br><hr>
+        <div class="row" style="width: 80%; height: 500px;margin-left: 10%; border-style: solid;
+        border-color: coral;">
+                <div id="curve_chart" style="width: 900px; height: 500px"></div>
+        </div>
+        <br><hr>
     </body>
 
     <!-- jQuery library -->
@@ -55,17 +61,22 @@
 
     <script>
         var _WeatherData = [];
-
+        var _IoT = [];
         google.charts.load('current', {
                 'packages':['geochart'],
                 // Note: you will need to get a mapsApiKey for your project.
                 // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
                 'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
         });
+
+        google.charts.load('current', {'packages':['line']});
+
+        
             
 
         $(document).ready(function(){
             ajaxWeather();
+            ajaxIoT();
         });
 
         function drawRegionsMap() {
@@ -74,6 +85,7 @@
             [_WeatherData.sys.country, _WeatherData.main.temp, _WeatherData.main.pressure]
             ]);
             var options = {
+                title: 'Weather Map',
                 region: '013', // Western Europe
             };
             var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
@@ -81,23 +93,34 @@
         }
 
         function drawChart() {
-            var data = google.visualization.arrayToDataTable([
-            ['Year', 'Sales', 'Expenses'],
-            ['2004',  1000,      400],
-            ['2005',  1170,      460],
-            ['2006',  660,       1120],
-            ['2007',  1030,      540]
-            ]);
-
+            
+            var data =  new google.visualization.DataTable();
+            data.addColumn('string', 'Time');
+            data.addColumn('number', 'Temperatura');
+            data.addColumn('number', 'Presion');
+            
+            for(var i in _IoT)
+            {
+                    var d = _IoT[i].Valor
+                    var dd = _IoT[i].Valor2
+                    var ddd = _IoT[i].date
+                    if(d != undefined && dd != undefined && ddd != undefined){
+                        data.addRow([_IoT[i].date, parseFloat(_IoT[i].Valor2) , parseFloat(_IoT[i].Valor)]);
+                    }
+        
+                
+            }
             var options = {
-            title: 'Company Performance',
-            curveType: 'function',
-            legend: { position: 'bottom' }
+                chart: {
+                title: 'Temperature and Presion vs Time',
+                },
+                width: 900,
+                height: 500
             };
+            
+           var chart = new google.charts.Line(document.getElementById('curve_chart'));
 
-            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-
-            chart.draw(data, options);
+            chart.draw(data, google.charts.Line.convertOptions(options));
         }
 
         /**
@@ -162,22 +185,36 @@
         /**
          * Ajax Code  
          **/
-         function ajaxWeather(){
+
+        function ajaxIoT(){
             $.ajax({
-            type: "GET",
-            url: 'https://fcc-weather-api.glitch.me/api/current?lat=9.937542&lon=-84.061180',
-            contentType: "application/json; charset=utf-8",
-            datatype: "json",
-            success: function(data) {
-                _WeatherData = data;
-                google.charts.setOnLoadCallback(drawRegionsMap);
-                /*$('#inpText1').val('Log: ' + data.coord.lon + '  -  Lat: ' + data.coord.lat );
-                $('#inpText2').val(data.weather[0].description);
-                $('#inpText3').val(data.main.temp);
-                $('#inpText4').val(data.main.humidity);*/
+                type: "GET",
+                url: 'https://iot-xyz.herokuapp.com/iot',
+                contentType: "application/json; charset=utf-8",
+                datatype: "json",
+                success: function(data) {
+                    _IoT = data;
+                    google.charts.setOnLoadCallback(drawChart);
+                    //google.charts.setOnLoadCallback(drawRegionsMap);
                 },
                 error: function() {
-                    mensaje('error', 'Error al cargar la información');
+                    alert('Error al cargar la información');
+                }
+            });
+        }
+
+         function ajaxWeather(){
+            $.ajax({
+                type: "GET",
+                url: 'https://fcc-weather-api.glitch.me/api/current?lat=9.937542&lon=-84.061180',
+                contentType: "application/json; charset=utf-8",
+                datatype: "json",
+                success: function(data) {
+                    _WeatherData = data;
+                    google.charts.setOnLoadCallback(drawRegionsMap);
+                },
+                error: function() {
+                    alert('Error al cargar la información');
                 }
             });
         }
@@ -201,8 +238,6 @@
                 }
             });
         }
-
-    
     </script>
     
     
