@@ -6,37 +6,80 @@
         
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
     </head>
     <body>
         <br>
-        <div id="divUno" class="well col-md-8 col-md-offset-2"> <!-- Div 1-->
-            <input type="radio" id="radioUno" name="radioB" />
-            <input type="radio" id="radioDos" name="radioB"/>
-            <br>
-            <div id="divDos" class="well form-group"> <!-- Div 2-->
-                <label for="inpText">Input Text</label>
-                <input type="text" id="inpText" class="form-control" />
-                <label for="inpEmail">Input Email</label>
-                <input type="email" id="inpEmail" class="form-control" />
-                <label for="inpTextArea">Text Area</label>
-                <textarea id="inpTextArea" class="form-control" > </textarea>
-            </div> <!-- Fin Div 2-->
-
-            <div id="divTres" class="well form-group"> <!-- Div 3-->
-                <label for="inpText1">Input 1</label>
-                <input type="text" id="inpText1" class="form-control" />
-                <label for="inpText2">Input 2</label>
-                <input type="text" id="inpText2" class="form-control" />
-                <label for="inpText3">Input 3</label>
-                <input type="text" id="inpText3" class="form-control" />
-                <label for="inpText4">Input 4</label>
-                <input type="text" id="inpText4" class="form-control"/>
-                <hr>
-                <button id="btnSubmit" class="btn btn-success" onclick="sendData()">Send</button>
-            </div> <!-- Fin Div 3-->
-        </div> <!-- Fin Div 1-->
+        <div class="row">
+                <div id="divUno" class="well col-md-8 col-md-offset-2"> <!-- Div 1-->
+                    <input type="radio" id="radioUno" name="radioB" />
+                    <input type="radio" id="radioDos" name="radioB"/>
+                    <br>
+                    <div id="divDos" class="well form-group"> <!-- Div 2-->
+                        <label for="inpText">Input Text</label>
+                        <input type="text" id="inpText" class="form-control" />
+                        <label for="inpEmail">Input Email</label>
+                        <input type="email" id="inpEmail" class="form-control" />
+                        <label for="inpTextArea">Text Area</label>
+                        <textarea id="inpTextArea" class="form-control" > </textarea>
+                    </div> <!-- Fin Div 2-->
+        
+                    <div id="divTres" class="well form-group"> <!-- Div 3-->
+                        <label for="inpText1">Input 1</label>
+                        <input type="text" id="inpText1" class="form-control" />
+                        <label for="inpText2">Input 2</label>
+                        <input type="text" id="inpText2" class="form-control" />
+                        <label for="inpText3">Input 3</label>
+                        <input type="text" id="inpText3" class="form-control" />
+                        <label for="inpText4">Input 4</label>
+                        <input type="text" id="inpText4" class="form-control"/>
+                        <hr>
+                        <button id="btnSubmit" class="btn btn-success" onclick="sendData()">Send</button>
+                    </div> <!-- Fin Div 3-->
+                </div> <!-- Fin Div 1-->
+        </div>
+        <hr>
+        <center><h2>Weather Map</h2></center>
+        <div class="row">
+               
+                <div id="regions_div" style="width: 80%; height: 500px;margin-left: 10%; border-style: solid;
+                border-color: coral;"></div>
+        </div>
     </body>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <script>
+        var _WeatherData = [];
+
+        google.charts.load('current', {
+                'packages':['geochart'],
+                // Note: you will need to get a mapsApiKey for your project.
+                // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+                'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+        });
+            
+
+        $(document).ready(function(){
+            ajaxWeather();
+        });
+
+        function drawRegionsMap() {
+            var data = google.visualization.arrayToDataTable([
+            ['Country', 'Temperature','Pressure'],
+            [_WeatherData.sys.country, _WeatherData.main.temp, _WeatherData.main.pressure]
+            ]);
+            var options = {
+                region: '013', // Western Europe
+            };
+            var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+            chart.draw(data, options);
+        }
+
         /**
         * Action Listeneres
         */
@@ -99,21 +142,22 @@
         /**
          * Ajax Code  
          **/
-        function ajaxWeather(){
+         function ajaxWeather(){
             $.ajax({
             type: "GET",
             url: 'https://fcc-weather-api.glitch.me/api/current?lat=9.937542&lon=-84.061180',
             contentType: "application/json; charset=utf-8",
             datatype: "json",
             success: function(data) {
-                alert("Success")
+                _WeatherData = data;
+                google.charts.setOnLoadCallback(drawRegionsMap);
                 /*$('#inpText1').val('Log: ' + data.coord.lon + '  -  Lat: ' + data.coord.lat );
                 $('#inpText2').val(data.weather[0].description);
                 $('#inpText3').val(data.main.temp);
                 $('#inpText4').val(data.main.humidity);*/
                 },
                 error: function() {
-                    alert('Error al cargar la información');
+                    mensaje('error', 'Error al cargar la información');
                 }
             });
         }
@@ -136,8 +180,5 @@
     
     </script>
     
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
 </html>
