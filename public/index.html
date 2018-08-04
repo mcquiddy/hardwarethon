@@ -36,7 +36,7 @@
                         <input type="text" id="inpText4" class="form-control"/>
                         <hr>
                         <button id="btnSubmit" class="btn btn-success" onclick="sendData()">Send</button>
-                        <button id="btnSubmit2" class="btn btn-success" onclick="stressData()">Send</button>
+                        <button id="btnSubmit2" class="btn btn-success" onclick="stressData()">estres</button>
                     </div> <!-- Fin Div 3-->
                 </div> <!-- Fin Div 1-->
         </div>
@@ -243,19 +243,14 @@
         function stressData(){
        
 
-            var json ={'Pulso':[
-            {'_id':12569875231,'_idUsuario':98856321456,'pulso':100},
-            {'_id':12569875231,'_idUsuario':98856321456,'pulso':100},                                       
-            {'_id':12569875231,'_idUsuario':98856321456,'pulso':100}
-            ]};
+      
 
             $.ajax({
-            data = JSON.parse(json);
+            data = JSON.parse( {'_id':12569875231,'_idUsuario':98856321456,'pulso':100}});
                 success: function(data) {
-                    alert("Server Response: \n Input 1: " + data.param1 + 
-                    "\n Input 2: " + data.param2 + 
-                    "\n Input 3: " + data.param3 +
-                    "\n Input 4: " + data.param4);
+                    alert("Server Response: \n Input 1: " + data._id + 
+                    "\n Input 2: " + data._idUsuario + 
+                    "\n Input 3: " + data.pulso );
                 },
                 error: function() {
                     alert('Error al realizar el test');
