@@ -241,25 +241,12 @@
         }
 
         function stressData(){
-       
-
-      
-
-            $.ajax({
-            data = JSON.parse( {'_id':12569875231,'_idUsuario':98856321456,'pulso':100}});
-                success: function(data) {
-                    alert("Server Response: \n Input 1: " + data._id + 
-                    "\n Input 2: " + data._idUsuario + 
-                    "\n Input 3: " + data.pulso );
-                },
-                error: function() {
-                    alert('Error al realizar el test');
-                }
-            }
-
-            );
-
-
+          
+            data = JSON.parse('{'_id':12569875231,'_idUsuario':98856321456,'pulso':100}}');
+  
+            alert("Server Response: \n Input 1: " + data._id + 
+            "\n Input 2: " + data._idUsuario + 
+            "\n Input 3: " + data.pulso );
         }
 
     </script>
