@@ -242,9 +242,13 @@
 
         function stressData(){
 
-            var txt = '{"name":"John", "age":30, "city":"New York"}'
+            var txt ={'Pulso':[
+            {'_id':12569875231,'_idUsuario':98856321456,'pulso':100},
+            {'_id':9999,'_idUsuario':98856321456,'pulso':100},                                       
+            {'_id':222222,'_idUsuario':98856321456,'pulso':100}
+          ] }
             var obj = JSON.parse(txt);
-            document.getElementById("inpTextArea").innerHTML = obj.name + ", " + obj.age;
+            document.getElementById("inpTextArea").innerHTML = obj.pulso[0]._id + ", " + obj.pulso[1]._id;
         }
 
 
