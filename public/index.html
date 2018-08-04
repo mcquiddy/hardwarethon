@@ -243,13 +243,23 @@
         function stressData(){
             var myObj, i, x = "";
             myObj = { "Pulso":[
-                {"_id":12569875231,"_idUsuario":98856321456,"pulso":100},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":100},                                       
-                {"_id":22222,"_idUsuario":98856321456,"pulso":100}
+                {"_id":12569875231,"_idUsuario":98856321456,"pulso":1},
+                {"_id":99999,"_idUsuario":98856321456,"pulso":2},  
+                {"_id":99999,"_idUsuario":98856321456,"pulso":3},
+                {"_id":99999,"_idUsuario":98856321456,"pulso":4},
+                {"_id":99999,"_idUsuario":98856321456,"pulso":5},
+                {"_id":99999,"_idUsuario":98856321456,"pulso":6},
+                {"_id":99999,"_idUsuario":98856321456,"pulso":7},
+                {"_id":99999,"_idUsuario":98856321456,"pulso":8},
+                {"_id":99999,"_idUsuario":98856321456,"pulso":9},
+                {"_id":99999,"_idUsuario":98856321456,"pulso":10},
+                {"_id":99999,"_idUsuario":98856321456,"pulso":11},
+                {"_id":99999,"_idUsuario":98856321456,"pulso":12},
+                {"_id":22222,"_idUsuario":98856321456,"pulso":13}
               ] };
 
             for (i in myObj.Pulso) {
-                x += myObj.Pulso[i]._id + "<br>";
+                x += myObj.Pulso[i]._id + "  ";
             }
 
             document.getElementById("inpTextArea").innerHTML = x;
