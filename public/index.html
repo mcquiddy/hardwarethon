@@ -283,7 +283,7 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-            var myObj, i,temp, x=[],y=[],z=[],p=[['Dia', 'Estres']];
+            var myObj, i,counter,temp,temp2, x=[],y=[],z=[],p=[['Dia', 'Estres']];
             var xE=[],yE=[],zE=[];
             myObj = { "Pulso":[
                 {"_id":12569875231,"_idUsuario":98856321456,"pulso":50,"dia":1},
@@ -393,12 +393,13 @@
               for (i in myObj.EEG) {
                 temp = xE[i] + yE[i] + zE[i];
                 temp= Math.round(temp/3);
+                temp2 = temp2 + temp;
                 p.push([myObj.EEG[i].dia,temp]);
-               
+               counter = counter +1;
     
             }
-
-
+            temp2 = temp2 / counter;
+            document.getElementById("inpTextArea").innerHTML = temp2;
           
 
             //for (i in myObj.Pulso) {
