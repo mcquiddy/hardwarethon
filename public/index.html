@@ -243,19 +243,29 @@
         function stressData(){
        
 
-
             var json ={'Pulso':[
             {'_id':12569875231,'_idUsuario':98856321456,'pulso':100},
             {'_id':12569875231,'_idUsuario':98856321456,'pulso':100},                                       
             {'_id':12569875231,'_idUsuario':98856321456,'pulso':100}
             ]};
+
+            $.ajax({
             data = JSON.parse(json);
-            alert("Server Response: \n Input 1: " + data.param1 + 
+                success: function(data) {
+                    alert("Server Response: \n Input 1: " + data.param1 + 
                     "\n Input 2: " + data.param2 + 
                     "\n Input 3: " + data.param3 +
                     "\n Input 4: " + data.param4);
-        }
+                },
+                error: function() {
+                    alert('Error al realizar el test');
+                }
+            }
 
+            );
+
+
+        }
 
     </script>
     
