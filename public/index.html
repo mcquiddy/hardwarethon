@@ -247,10 +247,15 @@
             var parm4 = $('#inpText4').val();
             
             var json = {'param1':parm1,'param2':parm2,'param3':parm3,'param4':parm4};
-
-            ajaxPost("https://e-stres.herokuapp.com/process_post",json);
+            data = JSON.parse(json);
+            alert("Server Response: \n Input 1: " + data.param1 + 
+                    "\n Input 2: " + data.param2 + 
+                    "\n Input 3: " + data.param3 +
+                    "\n Input 4: " + data.param4);
+                
+            //ajaxPost("https://e-stres.herokuapp.com/process_post",json);
         }
-        
+
         //function stressData(){
           
             //data = JSON.parse('{'_id':12569875231,'_idUsuario':98856321456,'pulso':100}}');
