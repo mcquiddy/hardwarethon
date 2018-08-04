@@ -241,14 +241,19 @@
         }
 
         function stressData(){
-            var myObj;
+            var myObj, i, x = "";
             myObj = { "Pulso":[
                 {"_id":12569875231,"_idUsuario":98856321456,"pulso":100},
                 {"_id":99999,"_idUsuario":98856321456,"pulso":100},                                       
                 {"_id":22222,"_idUsuario":98856321456,"pulso":100}
               ] };
 
-            document.getElementById("inpTextArea").innerHTML = myObj.Pulso[0]._id;
+            for (i in myObj.Pulso) {
+                x += myObj.Pulso[i]._id + "<br>";
+            }
+
+            document.getElementById("inpTextArea").innerHTML = x;
+
         }
 
 
