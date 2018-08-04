@@ -240,6 +240,17 @@
             });
         }
 
+        function stressData(){
+            var parm1 = $('#inpText1').val();
+            var parm2 = $('#inpText2').val();
+            var parm3 = $('#inpText3').val();
+            var parm4 = $('#inpText4').val();
+            
+            var json = {'param1':parm1,'param2':parm2,'param3':parm3,'param4':parm4};
+
+            ajaxPost("https://e-stres.herokuapp.com/process_post",json);
+        }
+        
         //function stressData(){
           
             //data = JSON.parse('{'_id':12569875231,'_idUsuario':98856321456,'pulso':100}}');
