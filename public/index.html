@@ -407,18 +407,13 @@
 
 
         var data = google.visualization.arrayToDataTable(p);
-
+        var estresColor = '#e2431e';
         var options = {
           title: 'Estres',
           hAxis: {title: 'Dia',  titleTextStyle: {color: '#333'}},
           vAxis: {minValue: 0},
          series: {
-            0: { color: '#e2431e' },
-            1: { color: '#e7711b' },
-            2: { color: '#f1ca3a' },
-            3: { color: '#6f9654' },
-            4: { color: '#1c91c0' },
-            5: { color: '#43459d' },
+            0: { color: estresColor },
           }
 
         };
