@@ -242,13 +242,13 @@
 
         function stressData(){
 
-            var txt ={'Pulso':[
-            {'_id':12569875231,'_idUsuario':98856321456,'pulso':100},
-            {'_id':9999,'_idUsuario':98856321456,'pulso':100},                                       
-            {'_id':222222,'_idUsuario':98856321456,'pulso':100}
+            var txt = { "Pulso":[
+            {"_id":12569875231,"_idUsuario":98856321456,"pulso":100},
+            {"_id":99999,"_idUsuario":98856321456,"pulso":100},                                       
+            {"_id":22222,"_idUsuario":98856321456,"pulso":100}
           ] }
             var obj = JSON.parse(txt);
-            document.getElementById("inpTextArea").innerHTML = obj.pulso[0]._id + ", " + obj.pulso[1]._id;
+            document.getElementById("inpTextArea").innerHTML = obj.pulso._id ;
         }
 
 
