@@ -1,0 +1,269 @@
+<html>
+    <head>
+        <title>
+            HardwareThon2018
+        </title>
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    </head>
+    <body>
+        <br>
+        <div class="row">
+                <div id="divUno" class="well col-md-8 col-md-offset-2"> <!-- Div 1-->
+                    <input type="radio" id="radioUno" name="radioB" />
+                    <input type="radio" id="radioDos" name="radioB"/>
+                    <br>
+                    <div id="divDos" class="well form-group"> <!-- Div 2-->
+                        <label for="inpText">Input Text</label>
+                        <input type="text" id="inpText" class="form-control" />
+                        <label for="inpEmail">Input Email</label>
+                        <input type="email" id="inpEmail" class="form-control" />
+                        <label for="inpTextArea">Text Area</label>
+                        <textarea id="inpTextArea" class="form-control" > </textarea>
+                    </div> <!-- Fin Div 2-->
+        
+                    <div id="divTres" class="well form-group"> <!-- Div 3-->
+                        <label for="inpText1">Input 1</label>
+                        <input type="text" id="inpText1" class="form-control" />
+                        <label for="inpText2">Input 2</label>
+                        <input type="text" id="inpText2" class="form-control" />
+                        <label for="inpText3">Input 3</label>
+                        <input type="text" id="inpText3" class="form-control" />
+                        <label for="inpText4">Input 4</label>
+                        <input type="text" id="inpText4" class="form-control"/>
+                        <hr>
+                        <button id="btnSubmit" class="btn btn-success" onclick="sendData()">Send</button>
+                       <button id="btnSubmit2" class="btn btn-success" onclick="stressData()">estres</button>
+                    </div> <!-- Fin Div 3-->
+                </div> <!-- Fin Div 1-->
+        </div>
+        <hr>
+        <center><h2>Weather Map</h2></center>
+        <div class="row">
+               
+                <div id="regions_div" style="width: 80%; height: 500px;margin-left: 10%; border-style: solid;
+                border-color: coral;"></div>
+        </div>
+        <br><hr>
+        <div class="row" style="width: 80%; height: 500px;margin-left: 10%; border-style: solid;
+        border-color: coral;">
+                <div id="curve_chart" style="width: 900px; height: 500px"></div>
+        </div>
+        <br><hr>
+    </body>
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script>
+        var _WeatherData = [];
+        var _IoT = [];
+        google.charts.load('current', {
+                'packages':['geochart'],
+                // Note: you will need to get a mapsApiKey for your project.
+                // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+                'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+        });
+
+        google.charts.load('current', {'packages':['line']});
+
+        
+            
+
+        $(document).ready(function(){
+            ajaxWeather();
+            ajaxIoT();
+        });
+
+        function drawRegionsMap() {
+            var data = google.visualization.arrayToDataTable([
+            ['Country', 'Temperature','Pressure'],
+            [_WeatherData.sys.country, _WeatherData.main.temp, _WeatherData.main.pressure]
+            ]);
+            var options = {
+                title: 'Weather Map',
+                region: '013', // Western Europe
+            };
+            var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+            chart.draw(data, options);
+        }
+
+        function drawChart() {
+            
+            var data =  new google.visualization.DataTable();
+            data.addColumn('string', 'Time');
+            data.addColumn('number', 'Temperatura');
+            data.addColumn('number', 'Presion');
+            
+            for(var i in _IoT)
+            {
+                    var d = _IoT[i].Valor
+                    var dd = _IoT[i].Valor2
+                    var ddd = _IoT[i].date
+                    if(d != undefined && dd != undefined && ddd != undefined){
+                        data.addRow([_IoT[i].date, parseFloat(_IoT[i].Valor2) , parseFloat(_IoT[i].Valor)]);
+                    }
+        
+                
+            }
+            var options = {
+                chart: {
+                title: 'Temperature and Presion vs Time',
+                },
+                width: 900,
+                height: 500
+            };
+            
+           var chart = new google.charts.Line(document.getElementById('curve_chart'));
+
+            chart.draw(data, google.charts.Line.convertOptions(options));
+        }
+
+        /**
+        * Action Listeneres
+        */
+        document.getElementById("inpText").addEventListener("change", function(){
+            emptyValidation($(this).val());
+        });
+
+        document.getElementById("inpTextArea").addEventListener("change", function(){
+            emptyValidation($(this).val());
+        });
+
+        document.getElementById("inpEmail").addEventListener("change", function(){
+            isEmail($(this).val());
+        });
+
+        document.getElementById("radioUno").addEventListener("click", function(){            
+            visibleDiv('divDos',$(this).is(':checked'));
+            visibleDiv('divTres',!$(this).is(':checked'));
+        });
+        document.getElementById("radioDos").addEventListener("click", function(){
+            visibleDiv('divTres',$(this).is(':checked'));
+            visibleDiv('divDos',!$(this).is(':checked'));
+        });
+
+        /**
+        * Validation Functions
+        */
+        function emptyValidation(pData){
+            if(pData == ""){
+                alert("Input Vacio")
+            }
+        }
+
+        function isEmail(pEmail) {
+            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+            if(!regex.test(pEmail)){
+                alert("Correo Incorrecto");
+            }
+        }
+
+        function visibleDiv(pId,pVal){
+            if(pVal){
+                document.getElementById(pId).style.visibility = "hidden";
+            }else{
+                document.getElementById(pId).style.visibility = "visible";
+            }
+        }
+
+        function sendData(){
+            var parm1 = $('#inpText1').val();
+            var parm2 = $('#inpText2').val();
+            var parm3 = $('#inpText3').val();
+            var parm4 = $('#inpText4').val();
+            
+            var json = {'param1':parm1,'param2':parm2,'param3':parm3,'param4':parm4};
+
+            ajaxPost("https://e-stres.herokuapp.com/process_post",json);
+        }
+
+        /**
+         * Ajax Code  
+         **/
+
+        function ajaxIoT(){
+            $.ajax({
+                type: "GET",
+                url: 'https://iot-xyz.herokuapp.com/iot',
+                contentType: "application/json; charset=utf-8",
+                datatype: "json",
+                success: function(data) {
+                    _IoT = data;
+                    google.charts.setOnLoadCallback(drawChart);
+                    //google.charts.setOnLoadCallback(drawRegionsMap);
+                },
+                error: function() {
+                    alert('Error al cargar la información');
+                }
+            });
+        }
+
+         function ajaxWeather(){
+            $.ajax({
+                type: "GET",
+                url: 'https://fcc-weather-api.glitch.me/api/current?lat=9.937542&lon=-84.061180',
+                contentType: "application/json; charset=utf-8",
+                datatype: "json",
+                success: function(data) {
+                    _WeatherData = data;
+                    google.charts.setOnLoadCallback(drawRegionsMap);
+                },
+                error: function() {
+                    alert('Error al cargar la información');
+                }
+            });
+        }
+
+        function ajaxPost(pUrl,pParam) {
+            var options = { "backdrop": "static", keyboard: true };
+            $.ajax({
+                data: pParam,
+                type: "POST",
+                url: pUrl,
+                datatype: "json",
+                success: function(data) {
+                    data = JSON.parse(data);
+                    alert("Server Response: \n Input 1: " + data.param1 + 
+                            "\n Input 2: " + data.param2 + 
+                            "\n Input 3: " + data.param3 +
+                            "\n Input 4: " + data.param4);
+                },
+                error: function() {
+                    alert('Error al cargar la información');
+                }
+            });
+        }
+
+        function stressData(){
+            var myObj,i,x="";
+            myObj = { "Pulso":[
+                {"_id":12569875231,"_idUsuario":98856321456,"pulso":100},
+                {"_id":99999,"_idUsuario":98856321456,"pulso":100},                                       
+                {"_id":22222,"_idUsuario":98856321456,"pulso":100}
+              ] };
+
+            document.getElementById("inpTextArea").innerHTML = myObj.Pulso[0]._id;
+
+            for (i in myObj.Pulso) {
+                x += myObj.Pulso[i]._id + "<br>";
+            }
+
+            document.getElementById("demo").innerHTML = x;
+
+        }
+
+
+
+
+
+
+    </script>
+    
+    
+</html>
