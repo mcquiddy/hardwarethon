@@ -21,7 +21,13 @@
 				
 				<div class="inner">
 						<span ><img src="images/logo.jpg" alt="" height="75" width="250"  /></span>
-							
+							 <h1><strong>Niveles De Estrés</strong></h1>
+                    <p> (1) Estrés Controlado</p>
+                    <p> (2) Estrés Riesgoso</p>
+                    <p> (3) Estrés Alto</p>
+                    <ul class="actions special">
+                        <li><a href="#one" class="button scrolly">Analizar</a></li>
+                    </ul>
 					
 					
 				</div>
@@ -50,7 +56,7 @@
 					<li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
 				</ul>
 				<ul class="copyright">
-					<li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					<li>&copy; WEB</li><li>Equipo:<a href="#">e-estrés</a></li>
 				</ul>
 			</section>
 
@@ -76,7 +82,7 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-            var myObj, i,counter=0,temp,temp2=0, x=[],y=[],z=[],p=[['Dia', 'Estres']];
+            var myObj, i,counter=0,temp,temp2=0, x=[],y=[],z=[],p=[['Dia', 'Estrés']];
             var xE=[],yE=[],zE=[];
             myObj = { "Pulso":[
                 {"_id":12569875231,"_idUsuario":98856321456,"pulso":50,"dia":1},
@@ -192,16 +198,19 @@
     
             }
             temp2 = Math.round(temp2 / counter);
-            
+            var titleEstres = 'NIVEL DE ESTRÉS ALTO';
             var estresColor = '#ff0000';
             if(temp2 == 1){
                 estresColor = '#00ff00';
+                titleEstres = 'NIVEL DE ESTRÉS CONTROLADO';
             }
             else if (temp2 == 2){
                 estresColor = '#ffff00';
+                titleEstres = 'NIVEL DE ESTRÉS RIESGOSO';
             }
             else {
                 estresColor = '#ff0000';
+                titleEstres = 'NIVEL DE ESTRÉS ALTO';
             }
           
 
@@ -213,7 +222,7 @@
         var data = google.visualization.arrayToDataTable(p);
       
         var options = {
-          title: 'Estres',
+          title: titleEstres,
           hAxis: {title: 'Dia',  titleTextStyle: {color: '#333'}},
           vAxis: {minValue: 0},
          series: {
