@@ -1,440 +1,116 @@
+<!DOCTYPE HTML>
+<!--
+    Photon by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
 <html>
     <head>
-        <title>
-            HardwareThon2018
-        </title>
-        
-        <!-- Latest compiled and minified CSS -->
+        <title>HardwareThon2018</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
     </head>
-    <body>
-        <br>
-        <div class="row">
-                <div id="divUno" class="well col-md-8 col-md-offset-2"> <!-- Div 1-->
-                    <input type="radio" id="radioUno" name="radioB" />
-                    <input type="radio" id="radioDos" name="radioB"/>
-                    <br>
-                    <div id="divDos" class="well form-group"> <!-- Div 2-->
-                        <label for="inpText">Input Text</label>
-                        <input type="text" id="inpText" class="form-control" />
-                        <label for="inpEmail">Input Email</label>
-                        <input type="email" id="inpEmail" class="form-control" />
-                        <label for="inpTextArea">Text Area</label>
-                        <textarea id="inpTextArea" class="form-control" > </textarea>
-                    </div> <!-- Fin Div 2-->
+    <body class="is-preload">
+
+        <!-- Header -->
+            <section id="header">
+            
+
+                
+                <div class="inner">
+                        <span ><img src="images/logo.jpg" alt="" height="75" width="250"  /></span>
+                            
+                    
+                    <h1>Hola, Nosotros somos <strong>e-strés</strong>.</h1>
+                    <p>"El que vive en armonia consigo mismo, vive en armonia con el universo"<br/> 
+                    - Marcus Aurelius</p>
+                    <ul class="actions special">
+                        <li><a href="#one" class="button scrolly">Descubrir</a></li>
+                    </ul>
+                </div>
+            </section>
+
+        <!-- One -->
+            <section id="one" class="main style1">
+                <div class="container">
+                    <div class="row gtr-150">
+                        <div class="col-6 col-12-medium">
+                            <header class="major">
+                                <h2>Problemática</h2>
+                            </header>
+                            <p>Un aumento desmedido en las enfermedades causadas por el
+                            estrés y mala concientización de la detección temprana de estos.</p>
+                        </div>
+                
+                        <div class="col-6 col-12-medium imp-medium">
+                            <span  ><img src="images/sad.jpg" alt="" height="400" width="300" align="right" /></span>
+                        </div>
+                
+                    </div>
+                </div>
+            </section>
+
+        <!-- Two -->
+            <section id="two" class="main style2">
+                <div class="container">
+
+                    <div class="row gtr-150">
+
+                        <div class="col-6 col-12-medium imp-medium">
+                            <center>
+                                <header class="major">
+                                    <h2>¿No tienes una cuenta?</h2>
+                                </header>
+                                <p>Registrate con el botón Sign Up</p>
+                                <ul class="actions special">
+                                    <li><a href="#" class="button wide primary">Sign Up</a></li>
+                                    <li><a href="#" class="button wide">Sign In</a></li>
+                                </ul>
+                            </center>
+                            <span class="image fit"><img src="images/relax.jpg" alt="" /></span>
+                        </div>
+
+                        <div class="col-6 col-12-medium">
+                            <header class="major">
+                                <h2>Solución</h2>
+                            </header>
+                            <p>Sabemos que el estrés y la depresión son temas a los que se les resta importancia, llegando a ser inclusive tabúes. Además, que nos afectan a todos por el acelerado ritmo de vida que se lleva hoy en día. ¿Qué hace la sociedad para combatir estos problemas?</p>
+                            <p>En e-strés se busca una concientización del problema además de una forma práctica de que tanto la empresa como los empleados puedan detectar tempranos niveles peligrosos de estrés y tratarlos antes de que estos se desencadenen en enfermedades físicas o mentales y que afecten a un nivel interno y personal.</p>
+                            <p>Por medio de una plataforma, reconocimiento del estado cerebral, reconocimiento de voz y el uso de auriculares con sensores cardiacos integrados, buscamos que cada persona pueda tener un monitoreo constante para evitar niveles de estrés pronunciados por un tiempo considerable.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
         
-                    <div id="divTres" class="well form-group"> <!-- Div 3-->
-                        <label for="inpText1">Input 1</label>
-                        <input type="text" id="inpText1" class="form-control" />
-                        <label for="inpText2">Input 2</label>
-                        <input type="text" id="inpText2" class="form-control" />
-                        <label for="inpText3">Input 3</label>
-                        <input type="text" id="inpText3" class="form-control" />
-                        <label for="inpText4">Input 4</label>
-                        <input type="text" id="inpText4" class="form-control"/>
-                        <hr>
-                        <button id="btnSubmit" class="btn btn-success" onclick="sendData()">Send</button>
-                       <button id="btnSubmit2" class="btn btn-success" onclick="stressData()">estres</button>
-                    </div> <!-- Fin Div 3-->
-                </div> <!-- Fin Div 1-->
-        </div>
-        <hr>
-        <center><h2>Weather Map</h2></center>
-        <div class="row">
-               
-                <div id="regions_div" style="width: 80%; height: 500px;margin-left: 10%; border-style: solid;
-                border-color: coral;"></div>
-        </div>
-        <br><hr>
-        <div class="row" style="width: 80%; height: 500px;margin-left: 10%; border-style: solid;
-        border-color: coral;">
-                <div id="curve_chart" style="width: 900px; height: 500px"></div>
-        </div>
-        <br><hr>
+            
+        
+        <!-- Footer -->
+            <section id="footer">
+                
+                <ul class="icons">
+                    <li><a href="#" class="icon alt fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon alt fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon alt fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+                    <li><a href="#" class="icon alt fa-envelope"><span class="label">Email</span></a></li>
+                </ul>
+                <ul class="copyright">
+                    <li>&copy; Untitled</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+            </section>
 
-        <div id="chart_div" style="width: 100%; height: 500px;"></div>
-
+        <!-- Scripts -->
+            <script src="assets/js/jquery.min.js"></script>
+            <script src="assets/js/jquery.scrolly.min.js"></script>
+            <script src="assets/js/browser.min.js"></script>
+            <script src="assets/js/breakpoints.min.js"></script>
+            <script src="assets/js/util.js"></script>
+            <script src="assets/js/main.js"></script>
 
     </body>
-
-    <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- Latest compiled JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-    <script>
-        var _WeatherData = [];
-        var _IoT = [];
-        google.charts.load('current', {
-                'packages':['geochart'],
-                // Note: you will need to get a mapsApiKey for your project.
-                // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
-                'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
-        });
-
-        google.charts.load('current', {'packages':['line']});
-
-        
-            
-
-        $(document).ready(function(){
-            ajaxWeather();
-            ajaxIoT();
-        });
-
-        function drawRegionsMap() {
-            var data = google.visualization.arrayToDataTable([
-            ['Country', 'Temperature','Pressure'],
-            [_WeatherData.sys.country, _WeatherData.main.temp, _WeatherData.main.pressure]
-            ]);
-            var options = {
-                title: 'Weather Map',
-                region: '013', // Western Europe
-            };
-            var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-            chart.draw(data, options);
-        }
-
-        function drawChart() {
-            
-            var data =  new google.visualization.DataTable();
-            data.addColumn('string', 'Time');
-            data.addColumn('number', 'Temperatura');
-            data.addColumn('number', 'Presion');
-            
-            for(var i in _IoT)
-            {
-                    var d = _IoT[i].Valor
-                    var dd = _IoT[i].Valor2
-                    var ddd = _IoT[i].date
-                    if(d != undefined && dd != undefined && ddd != undefined){
-                        data.addRow([_IoT[i].date, parseFloat(_IoT[i].Valor2) , parseFloat(_IoT[i].Valor)]);
-                    }
-        
-                
-            }
-            var options = {
-                chart: {
-                title: 'Temperature and Presion vs Time',
-                },
-                width: 900,
-                height: 500
-            };
-            
-           var chart = new google.charts.Line(document.getElementById('curve_chart'));
-
-            chart.draw(data, google.charts.Line.convertOptions(options));
-        }
-
-        /**
-        * Action Listeneres
-        */
-        document.getElementById("inpText").addEventListener("change", function(){
-            emptyValidation($(this).val());
-        });
-
-        document.getElementById("inpTextArea").addEventListener("change", function(){
-            emptyValidation($(this).val());
-        });
-
-        document.getElementById("inpEmail").addEventListener("change", function(){
-            isEmail($(this).val());
-        });
-
-        document.getElementById("radioUno").addEventListener("click", function(){            
-            visibleDiv('divDos',$(this).is(':checked'));
-            visibleDiv('divTres',!$(this).is(':checked'));
-        });
-        document.getElementById("radioDos").addEventListener("click", function(){
-            visibleDiv('divTres',$(this).is(':checked'));
-            visibleDiv('divDos',!$(this).is(':checked'));
-        });
-
-        /**
-        * Validation Functions
-        */
-        function emptyValidation(pData){
-            if(pData == ""){
-                alert("Input Vacio")
-            }
-        }
-
-        function isEmail(pEmail) {
-            var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-            if(!regex.test(pEmail)){
-                alert("Correo Incorrecto");
-            }
-        }
-
-        function visibleDiv(pId,pVal){
-            if(pVal){
-                document.getElementById(pId).style.visibility = "hidden";
-            }else{
-                document.getElementById(pId).style.visibility = "visible";
-            }
-        }
-
-        function sendData(){
-            var parm1 = $('#inpText1').val();
-            var parm2 = $('#inpText2').val();
-            var parm3 = $('#inpText3').val();
-            var parm4 = $('#inpText4').val();
-            
-            var json = {'param1':parm1,'param2':parm2,'param3':parm3,'param4':parm4};
-
-            ajaxPost("https://e-stres.herokuapp.com/process_post",json);
-        }
-
-        /**
-         * Ajax Code  
-         **/
-
-        function ajaxIoT(){
-            $.ajax({
-                type: "GET",
-                url: 'https://iot-xyz.herokuapp.com/iot',
-                contentType: "application/json; charset=utf-8",
-                datatype: "json",
-                success: function(data) {
-                    _IoT = data;
-                    google.charts.setOnLoadCallback(drawChart);
-                    //google.charts.setOnLoadCallback(drawRegionsMap);
-                },
-                error: function() {
-                    alert('Error al cargar la información');
-                }
-            });
-        }
-
-         function ajaxWeather(){
-            $.ajax({
-                type: "GET",
-                url: 'https://fcc-weather-api.glitch.me/api/current?lat=9.937542&lon=-84.061180',
-                contentType: "application/json; charset=utf-8",
-                datatype: "json",
-                success: function(data) {
-                    _WeatherData = data;
-                    google.charts.setOnLoadCallback(drawRegionsMap);
-                },
-                error: function() {
-                    alert('Error al cargar la información');
-                }
-            });
-        }
-
-        function ajaxPost(pUrl,pParam) {
-            var options = { "backdrop": "static", keyboard: true };
-            $.ajax({
-                data: pParam,
-                type: "POST",
-                url: pUrl,
-                datatype: "json",
-                success: function(data) {
-                    data = JSON.parse(data);
-                    alert("Server Response: \n Input 1: " + data.param1 + 
-                            "\n Input 2: " + data.param2 + 
-                            "\n Input 3: " + data.param3 +
-                            "\n Input 4: " + data.param4);
-                },
-                error: function() {
-                    alert('Error al cargar la información');
-                }
-            });
-        }
-
-        function stressData(){
-            var myObj, i, x = "";
-            myObj = { "Pulso":[
-                {"_id":12569875231,"_idUsuario":98856321456,"pulso":1},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":2},  
-                {"_id":99999,"_idUsuario":98856321456,"pulso":3},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":4},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":5},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":6},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":7},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":8},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":9},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":10},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":11},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":12},
-                {"_id":22222,"_idUsuario":98856321456,"pulso":13}
-              ] };
-
-            for (i in myObj.Pulso) {
-                x += myObj.Pulso[i]._id + "  ";
-            }
-
-            document.getElementById("inpTextArea").innerHTML = x;
-
-        }
-
-
-
-
-
-
-    </script>
-
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-            var myObj, i,counter=0,temp,temp2=0, x=[],y=[],z=[],p=[['Dia', 'Estres']];
-            var xE=[],yE=[],zE=[];
-            myObj = { "Pulso":[
-                {"_id":12569875231,"_idUsuario":98856321456,"pulso":50,"dia":1},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":55,"dia":2},  
-                {"_id":99999,"_idUsuario":98856321456,"pulso":60,"dia":3},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":55,"dia":4},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":70,"dia":5},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":80,"dia":6},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":90,"dia":7},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":85,"dia":8},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":75,"dia":9},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":100,"dia":10},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":120,"dia":11},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":110,"dia":12},
-                {"_id":22222,"_idUsuario":98856321456,"pulso":115,"dia":13},
-                 {"_id":22222,"_idUsuario":98856321456,"pulso":120,"dia":14},
-                  {"_id":22222,"_idUsuario":98856321456,"pulso":100,"dia":15}
-
-              ],"Voz":[
-                {"_id":12569875231,"_idUsuario":98856321456,"valor":[{"sadness": 0.854}, {"happy": 5}],"dia":1},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 6}, {"happy": 2}],"dia":2},  
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness":5}, {"happy": 3}],"dia":3},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 1}, {"happy": 5}],"dia":4},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 2}, {"happy": 8}],"dia":5},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness":15}, {"happy": 10}],"dia":6},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 1}, {"happy": 11}],"dia":7},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 15}, {"happy": 15}],"dia":8},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 14}, {"happy": 8}],"dia":9},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 12}, {"happy": 1}],"dia":10},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 13}, {"happy": 10}],"dia":11},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 10}, {"happy": 5}],"dia":12},
-                {"_id":22222,"_idUsuario":98856321456,"valor":[{"sadness": 11}, {"happy": 6}],"dia":13},
-                {"_id":22222,"_idUsuario":98856321456,"valor":[{"sadness": 12}, {"happy": 6}],"dia":14},
-                {"_id":22222,"_idUsuario":98856321456,"valor":[{"sadness": 15}, {"happy": 6}],"dia":15}
-
-              ],
-              "EEG":[
-                {"_id":12569875231,"_idUsuario":98856321456,"pulso":1,"dia":1},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":5,"dia":2},  
-                {"_id":99999,"_idUsuario":98856321456,"pulso":10,"dia":3},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":15,"dia":4},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":20,"dia":5},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":8,"dia":6},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":20,"dia":7},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":25,"dia":8},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":30,"dia":9},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":35,"dia":10},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":34,"dia":11},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":25,"dia":12},
-                {"_id":22222,"_idUsuario":98856321456,"pulso":30,"dia":13},
-                {"_id":22222,"_idUsuario":98856321456,"pulso":40,"dia":14},
-                {"_id":22222,"_idUsuario":98856321456,"pulso":50,"dia":15},
-
-              ]
-               };
-
-            for (i in myObj.Pulso) {
-                x.push(myObj.Pulso[i].pulso);
-                if(x[i] > 50 ){
-                    if(x[i] < 80){
-                        xE.push(1);
-
-                    }
-                    else if (x[i] > 80){
-                        if(x[i] < 100){
-                            xE.push(2);
-                        }
-                        else {
-                             xE.push(3);
-                        }
-                    }
-                    else {
-                        xE.push(1);
-                    }
-                }
-                else {
-                     xE.push(1);
-                }
-            }
-            for (i in myObj.Voz) {
-                            
-               
-                if( myObj.Voz[i].valor[0].sadness > myObj.Voz[i].valor[1].happy){
-                    yE.push(3);
-                }
-                else {
-                    yE.push(2);
-                }
-            
-               
-            }
-             for (i in myObj.EEG) {
-                z.push(myObj.EEG[i].pulso);
-                if(z[i] > 20 ){
-                    zE.push(3);
-                }
-                else if (z[i] > 12){
-                    zE.push(2);
-
-                }
-                else {
-                    zE.push(1);
-
-                }
-            }
-
-              for (i in myObj.EEG) {
-                temp = xE[i] + yE[i] + zE[i];
-                temp= Math.round(temp/3);
-                temp2 = temp2 + temp;
-                p.push([myObj.EEG[i].dia,temp]);
-                counter = counter + 1;
-    
-            }
-            temp2 = Math.round(temp2 / counter);
-            document.getElementById("inpTextArea").innerHTML = temp2;
-            var estresColor = '#ff0000';
-            if(temp2 == 1){
-                estresColor = '#00ff00';
-            }
-            else if (temp2 == 2){
-                estresColor = '#ffff00';
-            }
-            else {
-                estresColor = '#ff0000';
-            }
-          
-
-            //for (i in myObj.Pulso) {
-               // x.push([myObj.Pulso[i].dia,myObj.Pulso[i].pulso]);
-            //}
-
-
-        var data = google.visualization.arrayToDataTable(p);
-        var estresColor = '#ffff00';
-        var options = {
-          title: 'Estres',
-          hAxis: {title: 'Dia',  titleTextStyle: {color: '#333'}},
-          vAxis: {minValue: 0},
-         series: {
-            0: { color: estresColor },
-          }
-
-        };
-
-        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    </script>
-
-
-    
-    
 </html>
