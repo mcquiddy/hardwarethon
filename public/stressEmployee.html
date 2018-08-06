@@ -20,7 +20,7 @@
 
 				
 				<div class="inner">
-						<span ><img src="images/logo.jpg" alt="" height="75" width="250"  /></span>
+						<span ><img src="images/logo.png" alt="" height="150" width="250"  /></span>
 							 <h1><strong>Niveles De Estrés</strong></h1>
                     <p> (1) Estrés Controlado</p>
                     <p> (2) Estrés Riesgoso</p>
@@ -37,6 +37,9 @@
 			<section id="one" class="main style1">
 				<div class="container">
 						 <div id="chart_div" style="width: 100%; height: 500px;"></div>
+                         <div id="chart_pulse" style="width: 100%; height: 500px;"></div>
+                         <div id="chart_brain" style="width: 100%; height: 500px;"></div>
+                         <div id="chart_voz" style="width: 100%; height: 500px;"></div>
 				</div>
 			</section>
 
@@ -82,157 +85,382 @@
       google.charts.setOnLoadCallback(drawChart);
 
       function drawChart() {
-            var myObj, i,counter=0,temp,temp2=0, x=[],y=[],z=[],p=[['Dia', 'Estrés']];
-            var xE=[],yE=[],zE=[];
+            var myObj, i,counter=0,temp,temp2=0, x=[['Hora', 'Pulso Cardiaco']],y=[['Hora', 'Furia', 'Desagrado','Temor', 'Alegría', 'Tristeza']],z=[['Hora', 'Onda Cerebral']],p=[['Medición', 'Estrés']];
+            var xE=[],yE=[],zE=[],pE=[];
             myObj = { "Pulso":[
-                {"_id":12569875231,"_idUsuario":98856321456,"pulso":50,"dia":1},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":55,"dia":2},  
-                {"_id":99999,"_idUsuario":98856321456,"pulso":60,"dia":3},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":55,"dia":4},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":70,"dia":5},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":80,"dia":6},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":90,"dia":7},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":85,"dia":8},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":75,"dia":9},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":100,"dia":10},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":120,"dia":11},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":110,"dia":12},
-                {"_id":22222,"_idUsuario":98856321456,"pulso":115,"dia":13},
-                 {"_id":22222,"_idUsuario":98856321456,"pulso":120,"dia":14},
-                  {"_id":22222,"_idUsuario":98856321456,"pulso":100,"dia":15}
+                {"_id":12569875231,"_idUsuario":98856321456,"value":50,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":55,"date":"2018-08-05 10:17:03.933"},  
+                {"_id":99999,"_idUsuario":98856321456,"value":60,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":55,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":70,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":80,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":90,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":85,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":75,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":100,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":120,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":110,"date":"2018-08-05 10:17:03.933"},
+                {"_id":22222,"_idUsuario":98856321456,"value":115,"date":"2018-08-05 10:17:03.933"},
+                 {"_id":22222,"_idUsuario":98856321456,"value":120,"date":"2018-08-05 10:17:03.933"},
+                  {"_id":22222,"_idUsuario":98856321456,"value":100,"date":"2018-08-05 10:17:03.933"}
 
               ],"Voz":[
-                {"_id":12569875231,"_idUsuario":98856321456,"valor":[{"sadness": 0.854}, {"happy": 5}],"dia":1},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 6}, {"happy": 2}],"dia":2},  
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness":5}, {"happy": 3}],"dia":3},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 1}, {"happy": 5}],"dia":4},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 2}, {"happy": 8}],"dia":5},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness":15}, {"happy": 10}],"dia":6},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 1}, {"happy": 11}],"dia":7},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 15}, {"happy": 15}],"dia":8},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 14}, {"happy": 8}],"dia":9},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 12}, {"happy": 1}],"dia":10},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 13}, {"happy": 10}],"dia":11},
-                {"_id":99999,"_idUsuario":98856321456,"valor":[{"sadness": 10}, {"happy": 5}],"dia":12},
-                {"_id":22222,"_idUsuario":98856321456,"valor":[{"sadness": 11}, {"happy": 6}],"dia":13},
-                {"_id":22222,"_idUsuario":98856321456,"valor":[{"sadness": 12}, {"happy": 6}],"dia":14},
-                {"_id":22222,"_idUsuario":98856321456,"valor":[{"sadness": 15}, {"happy": 6}],"dia":15}
+                {"_id":12569875231,"_idUsuario":98856321456,"value":[{"sadness": 0.854}, {"happy": 5}],"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 6}, {"happy": 2}],"date":"2018-08-05 10:17:03.933"},  
+                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness":5}, {"happy": 3}],"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 1}, {"happy": 5}],"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 2}, {"happy": 8}],"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness":15}, {"happy": 10}],"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 1}, {"happy": 11}],"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 15}, {"happy": 15}],"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 14}, {"happy": 8}],"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 12}, {"happy": 1}],"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 13}, {"happy": 10}],"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 10}, {"happy": 5}],"date":"2018-08-05 10:17:03.933"},
+                {"_id":22222,"_idUsuario":98856321456,"value":[{"sadness": 11}, {"happy": 6}],"date":"2018-08-05 10:17:03.933"},
+                {"_id":22222,"_idUsuario":98856321456,"value":[{"sadness": 12}, {"happy": 6}],"date":"2018-08-05 10:17:03.933"},
+                {"_id":22222,"_idUsuario":98856321456,"value":[{"sadness": 15}, {"happy": 6}],"date":"2018-08-05 10:17:03.933"}
 
               ],
               "EEG":[
-                {"_id":12569875231,"_idUsuario":98856321456,"pulso":1,"dia":1},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":5,"dia":2},  
-                {"_id":99999,"_idUsuario":98856321456,"pulso":10,"dia":3},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":15,"dia":4},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":20,"dia":5},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":8,"dia":6},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":20,"dia":7},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":25,"dia":8},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":30,"dia":9},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":35,"dia":10},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":34,"dia":11},
-                {"_id":99999,"_idUsuario":98856321456,"pulso":25,"dia":12},
-                {"_id":22222,"_idUsuario":98856321456,"pulso":30,"dia":13},
-                {"_id":22222,"_idUsuario":98856321456,"pulso":40,"dia":14},
-                {"_id":22222,"_idUsuario":98856321456,"pulso":50,"dia":15},
+                {"_id":12569875231,"_idUsuario":98856321456,"value":1,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":5,"date":"2018-08-05 10:17:03.933"},  
+                {"_id":99999,"_idUsuario":98856321456,"value":10,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":15,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":20,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":8,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":20,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":25,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":30,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":35,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":34,"date":"2018-08-05 10:17:03.933"},
+                {"_id":99999,"_idUsuario":98856321456,"value":25,"date":"2018-08-05 10:17:03.933"},
+                {"_id":22222,"_idUsuario":98856321456,"value":30,"date":"2018-08-05 10:17:03.933"},
+                {"_id":22222,"_idUsuario":98856321456,"value":40,"date":"2018-08-05 10:17:03.933"},
+                {"_id":22222,"_idUsuario":98856321456,"value":50,"date":"2018-08-05 10:17:03.933"},
 
               ]
                };
+            var _BrainData;
 
-            for (i in myObj.Pulso) {
-                x.push(myObj.Pulso[i].pulso);
-                if(x[i] > 50 ){
-                    if(x[i] < 80){
-                        xE.push(1);
+            var _PulseData;
 
-                    }
-                    else if (x[i] > 80){
-                        if(x[i] < 100){
-                            xE.push(2);
-                        }
-                        else {
-                             xE.push(3);
-                        }
-                    }
-                    else {
-                        xE.push(1);
-                    }
-                }
-                else {
-                     xE.push(1);
-                }
-            }
-            for (i in myObj.Voz) {
-                            
-               
-                if( myObj.Voz[i].valor[0].sadness > myObj.Voz[i].valor[1].happy){
-                    yE.push(3);
-                }
-                else {
-                    yE.push(2);
-                }
-            
-               
-            }
-             for (i in myObj.EEG) {
-                z.push(myObj.EEG[i].pulso);
-                if(z[i] > 20 ){
-                    zE.push(3);
-                }
-                else if (z[i] > 12){
-                    zE.push(2);
+            var _VozData;
 
-                }
-                else {
-                    zE.push(1);
 
-                }
-            }
+            var max;     
+            $.ajax({
+                type: "GET",
+                url: 'http://192.168.1.129:3000/getBrain',
+                contentType: "application/json; charset=utf-8",
+                datatype: "json",
+                success: function(data) {
+                    _BrainData = data;
+                    
+                    for (i in _BrainData) {
 
-              for (i in myObj.EEG) {
-                temp = xE[i] + yE[i] + zE[i];
-                temp= Math.round(temp/3);
-                temp2 = temp2 + temp;
-                p.push([myObj.EEG[i].dia,temp]);
-                counter = counter + 1;
-    
-            }
-            temp2 = Math.round(temp2 / counter);
-            var titleEstres = 'NIVEL DE ESTRÉS ALTO';
-            var estresColor = '#ff0000';
-            if(temp2 == 1){
-                estresColor = '#00ff00';
-                titleEstres = 'NIVEL DE ESTRÉS CONTROLADO';
-            }
-            else if (temp2 == 2){
-                estresColor = '#ffff00';
-                titleEstres = 'NIVEL DE ESTRÉS RIESGOSO';
-            }
-            else {
-                estresColor = '#ff0000';
-                titleEstres = 'NIVEL DE ESTRÉS ALTO';
-            }
+        
+                            var dateObj = new Date(_BrainData[i].date);
+                  
+                            var h = dateObj.getHours();
+                            var m = dateObj.getMinutes();
+                            var n = h + ":" + m  ;
+                       
+                            var month = dateObj.getUTCMonth() + 1; //months from 1-12
+                            var day = dateObj.getUTCDate();
+                            var year = dateObj.getUTCFullYear();
           
+                           var newdate = year + "/" + month + "/" + day;
 
-            //for (i in myObj.Pulso) {
-               // x.push([myObj.Pulso[i].dia,myObj.Pulso[i].pulso]);
-            //}
+                            z.push([n,_BrainData[i].value]);
+                           
+                            if(_BrainData[i].value > 20 ){
+                                zE.push(3);
+                            }
+                            else if (_BrainData[i].value > 12){
+                                zE.push(2);
 
+                            }
+                            else {
+                                zE.push(1);
 
-        var data = google.visualization.arrayToDataTable(p);
-      
+                            }
+                          
+                     }
+                       var data = google.visualization.arrayToDataTable(z);
+         var estresColor = '#ff00ff';
         var options = {
-          title: titleEstres,
-          hAxis: {title: 'Dia',  titleTextStyle: {color: '#333'}},
+          title: 'Onda Cerebral',
+          hAxis: {title: 'Hora ',  titleTextStyle: {color: '#333'}},
           vAxis: {minValue: 0},
          series: {
-            0: { color: estresColor },
+            0: { color: estresColor},
           }
 
         };
 
-        var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_brain'));
         chart.draw(data, options);
+                     
+                },
+                error: function() {
+                    alert('Error al cargar la información');
+                }
+            });
+             
+           $.ajax({
+                type: "GET",
+                url: 'http://192.168.1.129:3000/getPulse',
+                contentType: "application/json; charset=utf-8",
+                datatype: "json",
+                success: function(data) {
+                    _PulseData = data;
+                    
+                    for (i in _PulseData) {
+
+        
+                            var dateObj = new Date(_PulseData[i].date);
+                  
+                            var h = dateObj.getHours();
+                            var m = dateObj.getMinutes();
+                            var n = h + ":" + m  ;
+                       
+                            var month = dateObj.getUTCMonth() + 1; //months from 1-12
+                            var day = dateObj.getUTCDate();
+                            var year = dateObj.getUTCFullYear();
+          
+                           var newdate = year + "/" + month + "/" + day;
+
+                            x.push([n,_PulseData[i].value]);
+                           
+                            if(_PulseData[i].value > 50 ){
+                                if(_PulseData[i].value < 80){
+                                    xE.push(1);
+
+                                }
+                                else if (_PulseData[i].value> 80){
+                                    if(_PulseData[i].value < 100){
+                                        xE.push(2);
+                                    }
+                                    else {
+                                         xE.push(3);
+                                    }
+                                }
+                                else {
+                                    xE.push(1);
+                                }
+                        }
+                        else {
+                             xE.push(1);
+                        }
+                          
+                     }
+
+                       var data = google.visualization.arrayToDataTable(x);
+         var estresColor = '#0000ff';
+        var options = {
+          title: 'Pulso Cardiaco',
+          hAxis: {title: 'Hora',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0},
+         series: {
+            0: { color: estresColor},
+          }
+
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_pulse'));
+        chart.draw(data, options);
+                     
+                },
+                error: function() {
+                    alert('Error al cargar la información');
+                }
+            });
+            
+
+                $.ajax({
+                type: "GET",
+                url: 'http://192.168.1.129:3000/getVoice',
+                contentType: "application/json; charset=utf-8",
+                datatype: "json",
+                success: function(data) {
+                    _VozData = data;
+
+                    
+                    
+                    
+                    for (i in _VozData) {
+
+                            var dateObj = new Date(_VozData[i].date);
+                  
+                            var h = dateObj.getHours();
+                            var m = dateObj.getMinutes();
+                            var n = h + ":" + m  ;
+                       
+                            var month = dateObj.getUTCMonth() + 1; //months from 1-12
+                            var day = dateObj.getUTCDate();
+                            var year = dateObj.getUTCFullYear();
+          
+                           var newdate = year + "/" + month + "/" + day;
+
+                            y.push([n,parseFloat(_VozData[i].value[0].score.$numberDecimal),parseFloat(_VozData[i].value[1].score.$numberDecimal),parseFloat(_VozData[i].value[2].score.$numberDecimal),parseFloat(_VozData[i].value[3].score.$numberDecimal),parseFloat(_VozData[i].value[4].score.$numberDecimal)]);
+                          
+
+                            if(Math.round(parseFloat(_VozData[i].value[3].score.$numberDecimal)) > Math.round(((parseFloat(_VozData[i].value[0].score.$numberDecimal)+parseFloat(_VozData[i].value[1].score.$numberDecimal)+parseFloat(_VozData[i].value[2].score.$numberDecimal)+parseFloat(_VozData[i].value[4].score.$numberDecimal))/4) )){
+                                yE.push(1);
+                            }
+                            else if (Math.round(parseFloat(_VozData[i].value[3].score.$numberDecimal)) < Math.round(((parseFloat(_VozData[i].value[0].score.$numberDecimal)+parseFloat(_VozData[i].value[1].score.$numberDecimal)+parseFloat(_VozData[i].value[2].score.$numberDecimal)+parseFloat(_VozData[i].value[4].score.$numberDecimal))/4) )){
+                                yE.push(3);
+
+                            }
+                            else {
+                                yE.push(2);
+
+                            }
+                            
+                          
+                     }
+                      
+        var data = google.visualization.arrayToDataTable(y);
+        var furia = '#ff0000';
+        var desagrado = '#00ff00';
+        var temor = '#e600e6';
+        var alegria = '#ffff00';
+        var tristeza = '#0000ff';
+        var options = {
+          title: 'Emociones',
+          hAxis: {title: 'Hora ',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0},
+         series: {
+            0: { color: furia},
+            1: { color: desagrado},
+            2: { color: temor},
+            3: { color: alegria},
+            4: { color: tristeza},
+          }
+
+        };
+
+        var chart = new google.visualization.AreaChart(document.getElementById('chart_voz'));
+        chart.draw(data, options);
+
+
+
+        if(xE.length > yE.length){
+                if(xE.length > zE.length){
+                    max = xE.length;
+                }
+                else {
+                    max = zE.length;
+                }
+
+            }
+            else if(yE.length > zE.length){
+                max = yE.length;
+
+            }
+            else {
+                 max = zE.length;
+
+            }
+            
+
+              for (i = 0; i < max; i++) {
+                if(xE.length > i){
+                    if(yE.length > i){
+                        if(zE.length > i){
+                             temp = xE[i] + yE[i] + zE[i];
+                        }
+                        else {
+                             temp = xE[i] + yE[i]; 
+                        }
+                      
+                    }
+                    else if(zE.length > i){
+                             temp = xE[i] + zE[i];
+                        }
+                    else{
+                        temp = xE[i];
+                    }
+
+                }
+                else if(yE.length > i){
+                    if(xE.length > i){
+                        if(zE.length > i){
+                             temp = yE[i] + xE[i] + zE[i];
+                        }
+                        else {
+                            temp = yE[i] + xE[i];
+                        }
+                        
+                    }
+                    else if(zE.length > i){
+                             temp = yE[i] + zE[i];
+                        }
+                    else{
+                        temp = yE[i];
+                    }
+
+                }
+                else {
+                      temp = zE[i];
+
+                }
+                
+                temp= Math.round(temp/3);
+                temp2 = temp2 + temp;
+
+                p.push([i,temp]);
+                counter = counter + 1;
+    
+            }
+
+           
+                      
+            temp2 = Math.round(temp2 / counter);
+            var titleEstres1 = 'NIVEL DE ESTRÉS ALTO';
+            var estresColor1 = '#ff0000';
+            if(temp2 == 1){
+                estresColor1 = '#00ff00';
+                titleEstres1 = 'NIVEL DE ESTRÉS CONTROLADO';
+            }
+            else if (temp2 == 2){
+                estresColor1 = '#ffff00';
+                titleEstres1 = 'NIVEL DE ESTRÉS RIESGOSO';
+            }
+            else {
+                estresColor1= '#ff0000';
+                titleEstres1 = 'NIVEL DE ESTRÉS ALTO';
+            }
+        
+        var data1 = google.visualization.arrayToDataTable(p);
+     
+        var options1 = {
+          title: titleEstres1,
+          hAxis: {title: 'Mediciones',  titleTextStyle: {color: '#333'}},
+          vAxis: {minValue: 0},
+         series: {
+            0: { color: estresColor1},
+          }
+
+        };
+
+        var chart1 = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        chart1.draw(data1, options1);
+                     
+                },
+                error: function() {
+                    alert('Error al cargar la información');
+                }
+
+
+            
+                
+            });
+
+
+
+      
       }
     </script>
 
