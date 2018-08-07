@@ -81,66 +81,20 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
 
+      google.charts.load('current', {'packages':['corechart']});
+      
+      google.charts.setOnLoadCallback(drawChart);
+      
       function drawChart() {
+        var chartB = new google.visualization.AreaChart(document.getElementById('chart_brain'));
+      var chartP = new google.visualization.AreaChart(document.getElementById('chart_pulse'));
+      var chartV = new google.visualization.AreaChart(document.getElementById('chart_voz'));
+      var chart1 = new google.visualization.AreaChart(document.getElementById('chart_div'));
             var myObj, i,counter=0,temp,temp2=0, x=[['Hora', 'Pulso Cardiaco']],y=[['Hora', 'Furia', 'Desagrado','Temor', 'Alegría', 'Tristeza']],z=[['Hora', 'Onda Cerebral']],p=[['Medición', 'Estrés']];
             var xE=[],yE=[],zE=[],pE=[];
-            myObj = { "Pulso":[
-                {"_id":12569875231,"_idUsuario":98856321456,"value":50,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":55,"date":"2018-08-05 10:17:03.933"},  
-                {"_id":99999,"_idUsuario":98856321456,"value":60,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":55,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":70,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":80,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":90,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":85,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":75,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":100,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":120,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":110,"date":"2018-08-05 10:17:03.933"},
-                {"_id":22222,"_idUsuario":98856321456,"value":115,"date":"2018-08-05 10:17:03.933"},
-                 {"_id":22222,"_idUsuario":98856321456,"value":120,"date":"2018-08-05 10:17:03.933"},
-                  {"_id":22222,"_idUsuario":98856321456,"value":100,"date":"2018-08-05 10:17:03.933"}
-
-              ],"Voz":[
-                {"_id":12569875231,"_idUsuario":98856321456,"value":[{"sadness": 0.854}, {"happy": 5}],"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 6}, {"happy": 2}],"date":"2018-08-05 10:17:03.933"},  
-                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness":5}, {"happy": 3}],"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 1}, {"happy": 5}],"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 2}, {"happy": 8}],"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness":15}, {"happy": 10}],"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 1}, {"happy": 11}],"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 15}, {"happy": 15}],"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 14}, {"happy": 8}],"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 12}, {"happy": 1}],"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 13}, {"happy": 10}],"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":[{"sadness": 10}, {"happy": 5}],"date":"2018-08-05 10:17:03.933"},
-                {"_id":22222,"_idUsuario":98856321456,"value":[{"sadness": 11}, {"happy": 6}],"date":"2018-08-05 10:17:03.933"},
-                {"_id":22222,"_idUsuario":98856321456,"value":[{"sadness": 12}, {"happy": 6}],"date":"2018-08-05 10:17:03.933"},
-                {"_id":22222,"_idUsuario":98856321456,"value":[{"sadness": 15}, {"happy": 6}],"date":"2018-08-05 10:17:03.933"}
-
-              ],
-              "EEG":[
-                {"_id":12569875231,"_idUsuario":98856321456,"value":1,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":5,"date":"2018-08-05 10:17:03.933"},  
-                {"_id":99999,"_idUsuario":98856321456,"value":10,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":15,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":20,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":8,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":20,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":25,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":30,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":35,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":34,"date":"2018-08-05 10:17:03.933"},
-                {"_id":99999,"_idUsuario":98856321456,"value":25,"date":"2018-08-05 10:17:03.933"},
-                {"_id":22222,"_idUsuario":98856321456,"value":30,"date":"2018-08-05 10:17:03.933"},
-                {"_id":22222,"_idUsuario":98856321456,"value":40,"date":"2018-08-05 10:17:03.933"},
-                {"_id":22222,"_idUsuario":98856321456,"value":50,"date":"2018-08-05 10:17:03.933"},
-
-              ]
-               };
+    
+               var url='http://172.17.4.50:3000';
             var _BrainData;
 
             var _PulseData;
@@ -151,7 +105,7 @@
             var max;     
             $.ajax({
                 type: "GET",
-                url: 'http://192.168.1.129:3000/getBrain',
+                url: url + '/getBrain',
                 contentType: "application/json; charset=utf-8",
                 datatype: "json",
                 success: function(data) {
@@ -199,8 +153,8 @@
 
         };
 
-        var chart = new google.visualization.AreaChart(document.getElementById('chart_brain'));
-        chart.draw(data, options);
+        
+        chartB.draw(data, options);
                      
                 },
                 error: function() {
@@ -210,7 +164,7 @@
              
            $.ajax({
                 type: "GET",
-                url: 'http://192.168.1.129:3000/getPulse',
+                url: url + '/getPulse',
                 contentType: "application/json; charset=utf-8",
                 datatype: "json",
                 success: function(data) {
@@ -268,8 +222,8 @@
 
         };
 
-        var chart = new google.visualization.AreaChart(document.getElementById('chart_pulse'));
-        chart.draw(data, options);
+        
+        chartP.draw(data, options);
                      
                 },
                 error: function() {
@@ -280,7 +234,7 @@
 
                 $.ajax({
                 type: "GET",
-                url: 'http://192.168.1.129:3000/getVoice',
+                url: url + '/getVoice',
                 contentType: "application/json; charset=utf-8",
                 datatype: "json",
                 success: function(data) {
@@ -341,8 +295,8 @@
 
         };
 
-        var chart = new google.visualization.AreaChart(document.getElementById('chart_voz'));
-        chart.draw(data, options);
+        
+        chartV.draw(data, options);
 
 
 
@@ -437,7 +391,7 @@
      
         var options1 = {
           title: titleEstres1,
-          hAxis: {title: 'Mediciones',  titleTextStyle: {color: '#333'}},
+          hAxis: {title: 'Medición',  titleTextStyle: {color: '#333'}},
           vAxis: {minValue: 0},
          series: {
             0: { color: estresColor1},
@@ -445,7 +399,7 @@
 
         };
 
-        var chart1 = new google.visualization.AreaChart(document.getElementById('chart_div'));
+        
         chart1.draw(data1, options1);
                      
                 },
@@ -460,7 +414,7 @@
 
 
 
-      setInterval(drawChart, 3000);
+      setInterval(drawChart, 10000);
       }
     </script>
 
